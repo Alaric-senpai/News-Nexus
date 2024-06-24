@@ -36,13 +36,13 @@ export const routes: Routes = [
                 component: SectionsComponent,
                 children: [
                     {
-                        path: 'category/:id',
+                        path: 'category/:cat',
                         component: CategoryComponent
                     }
                 ]
             },
             {
-                path : 'category/:id',
+                path : 'category/:cat',
                 component: CategoryComponent
             },
             {
@@ -57,7 +57,7 @@ export const routes: Routes = [
     },
     {
         path: '',
-        redirectTo: 'login',
+        redirectTo: 'home',
         pathMatch: 'full'
     }
 ];

@@ -1,1 +1,32 @@
-<p>category works!</p>
+<div class="w3-bar">
+    <div class="left w3-bar-item w3-text-deep-purple w3-xlarge pt-sans-bold-italic">
+        {{ category.toLocaleUpperCase() }}
+    </div>
+</div>
+<div class="container-fluid m-0" *ngIf="newsData.length > 0">
+    <!-- data is available -->
+    <div class="row g-lg-4 story">
+        <div class="card w3-card-4 col-md-12 p-1 story-card" *ngFor="let story of displayedStories">
+            <div class="details">
+                <h5>{{ story.title }}</h5>
+                <h6>{{ story.byline }}</h6>
+                <h6>Source: {{ story.source }}</h6>
+                <a [href]="story.url" target="_blank">Read more</a>
+            </div>
+            <div class="image-holder">
+                <img [src]="story.multimedia[1]?.url" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="pagination w3-bar p-2 w3-display-container container" *ngIf="pagination.totalpages > 1">
+        <button (click)="prevPage()" [disabled]="pagination.page === 1" class="w3-bar-item w3-left btn w3-button w3-sand">Previous</button>
+        <span class="w3-bar-item w3-display-middle">Page {{ pagination.page }} of {{ pagination.totalpages }}</span>
+        <button (click)="nextPage()" [disabled]="pagination.page === pagination.totalpages" class="w3-right w3-bar-item btn w3-display-right btn-info">Next</button>
+    </div>
+</div>
+<div class="loader" *ngIf="newsData.length === 0 && !error">
+    <div class="custom-loader"></div>
+</div>
+<div class="error" *ngIf="error">
+    {{ error }}
+</div>

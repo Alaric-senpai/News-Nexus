@@ -1,0 +1,23 @@
+.story{
+    gap: 10px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    }
+.story-card{
+    display: grid;
+    min-height: 250px;
+    grid-template-columns: 60% 40%;
+    
+}
+.image-holder{
+    height: 100%;
+    background-color: #8EC5FC;
+    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+    overflow: auto;
+}
+.image-holder img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
