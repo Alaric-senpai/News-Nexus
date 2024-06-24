@@ -30,9 +30,8 @@
     </div>
 
 </div>
-<div class="" *ngIf="stories.length == 0 && !error">
-loading stories ...
-
+<div class="loader container-fluid m-0" *ngIf="stories.length == 0 && !error">
+    <div class="custom-loader"></div>
 </div>
 <div *ngIf="error">
     error detected 
