@@ -1,0 +1,43 @@
+<div class=" m-0">
+    <div class="w3-bar w3-block w3-black p-1">
+        <div class="w3-bar-item  menu">
+            <i class="fa-solid fa-bars p-1"></i>
+        </div>
+        <div class="search w3-bar-item">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" name="search" id="search" placeholder="search news nexus">
+        </div>
+        <div class="icons w3-bar-item w3-right d-flex align-items-center justify-content-between">
+            <a href="#">
+                <i class="fa-brands fa-facebook w3-text-white"></i>
+            </a>
+            <a href="#">
+                <i class="fa-brands fa-instagram w3-text-white"></i>
+            </a>
+            <a href="#">
+                <i class="fa-brands fa-tiktok w3-text-white"></i>
+            </a>
+        </div>
+    </div>
+    <div class="w3-bar d-flex align-items-start justify-content-between sticky-top w3-white meni">
+        <div class="left link-holder w3-bar-item d-flex align-items-center justify-content-between">
+            <a [routerLink]="['/home']">Home</a>
+            <a [routerLink]="['category', '1']">Politics</a>
+            <a [routerLink]="['category', '2']">Science</a>
+
+        </div>
+        <div class="logo w3-bar-item">
+            <a [routerLink]="['/home']">New Nexus</a>
+        </div>
+        <div class="right link-holder w3-bar-item d-flex align-items-center justify-content-between">
+            <a [routerLink]="['category', '3']">Technology</a>
+            <a [routerLink]="['category', '4']">Home</a>
+            <a [routerLink]="['category', '5']">Business</a>
+            <a [routerLink]="['sections']">Sections</a>
+
+        </div>
+    </div>
+    <div class="container-fluid mt-2">
+        <router-outlet></router-outlet>        
+    </div>
+</div>

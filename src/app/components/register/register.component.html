@@ -1,0 +1,55 @@
+<div class="container-fluid mt-5 p-4 d-flex align-items-center justify-content-center ">
+    <div class="card w3-card-4 p-3">
+      <div class="card-body">
+        <h5 class="card-title">Register</h5>
+        <form [formGroup]="registerform" (ngSubmit)="registeruser()">
+            <div class="mb-3">
+                <label for="fullname" class="form-label">Full name</label>
+                <input type="text" id="fullname" class="form-control" formControlName="fullname">
+                <small *ngIf="fullname.invalid && (fullname.dirty || fullname.touched)" class="w3-block w3-text-red">
+                    <div *ngIf="fullname.errors?.['required']">Fullname is required</div>
+                    <div *ngIf="fullname.errors?.['pattern']">Fullname should be valid</div>
+
+                </small>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" name="email" id="email" class="form-control" formControlName="email">
+                <small *ngIf="email.invalid && (email.dirty || email.touched)" class="w3-block w3-text-red">
+                    <div *ngIf="email.errors?.['required']">Email is required</div>
+                    <div *ngIf="email.errors?.['email']">Email should be valid</div>
+
+                </small>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" name="password" id="password" class="form-control" formControlName="password">
+                <small *ngIf="password.invalid && (password.dirty || password.touched)" class="w3-block w3-text-red">
+                    <div *ngIf="password.errors?.['required']">password is required</div>
+
+                </small>
+            </div>
+            <div class="mb-3">
+                <label for="cpassword" class="form-label">Confirm Password</label>
+                <input type="password" name="cpassword" id="cpassword" class="form-control" formControlName="cpassword">
+                <small *ngIf="cpassword.invalid && (cpassword.dirty || cpassword.touched)" class="w3-block w3-text-red">
+                    <div *ngIf="cpassword.errors?.['required']">Confirm password is required</div>
+
+                </small>
+                    
+            </div>
+            <small class="w3-block w3-text-red">
+                <div *ngIf="registerform.errors?.['passwordMismatch'] && password.valid && cpassword.valid">
+                    password must be matching
+                </div>
+            </small>
+            <div class="mb-3 w3-center mb-3">
+                <button type="submit" class="btn btn-success mb-3" [disabled]="registerform.invalid">Register</button> <br>
+
+                <!-- <button type="submit" class="btn btn-success mb-3" []>Register</button> <br> -->
+                Already have an account? <a routerLink="/login">Login here</a>
+            </div>
+        </form>
+      </div>
+    </div>
+</div>

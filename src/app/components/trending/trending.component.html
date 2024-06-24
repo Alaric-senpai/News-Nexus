@@ -1,0 +1,39 @@
+<div class="w3-bar">
+    <div class="left w3-bar-item w3-text-deep-purple w3-xlarge pt-sans-bold-italic">
+        Trending News
+    </div>
+</div>
+<div class="mb-3" *ngIf="stories.length >0">
+    <div *ngFor="let story of displayedStories">
+        <div class=" mb-3 w-85 story  rounded-3">
+            <div class="image rounded-2">
+                <img [src]="story.multimedia[0].url" alt="">
+            </div>
+            <div class="details  p-2 w3-card-4 px-3">
+                <h2 class="w3-center">
+                    {{ story.title}}
+                </h2>
+                <p class="p-1">
+                    {{ story.byline }}
+                </p>
+                <p class="p-1">
+                    {{ story.abstract}}
+                </p>
+                    <a href="{{story.url}}" target="_blank" class="w3-margin more">Read More</a>
+            </div>
+        </div>
+    </div>
+    <div class="pagination w3-bar p-2 w3-display-container container">
+        <button (click)="prevPage()" [disabled]="pagination.page === 1" class="w3-bar-item w3-left btn w3-button w3-sand">Previous</button>
+        <span class="w3-bar-item w3-display-middle">Page {{ pagination.page }} of {{ pagination.totalpages }}</span>
+        <button (click)="nextPage()" [disabled]="pagination.page === pagination.totalpages" class="w3-right w3-bar-item btn w3-display-right btn-info">Next</button>
+    </div>
+
+</div>
+<div class="" *ngIf="stories.length == 0 && !error">
+loading stories ...
+
+</div>
+<div *ngIf="error">
+    error detected 
+</div>
