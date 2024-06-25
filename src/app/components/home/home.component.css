@@ -55,3 +55,35 @@ input{
 .meni{
     z-index: 1000;
 }
+@media only screen and (max-width: 1200px){
+    .class-menu{
+        position: fixed;
+        top: 60px;
+        left: -100%;
+        display: flex !important;
+        flex-direction: column !important;
+        width: 250px;
+        transition: all .5s ease;
+        box-shadow: 2px 4px 10px 5px grey;
+        min-height: 90dvh;
+
+    }
+    .class-menu div{
+        display: flex !important;
+        /* align-items:; */
+        flex-direction: column !important;
+    }
+    .icons{
+        display: none !important;
+    }
+    .shown{
+        left: 0 !important;
+    }
+    .small-sticky-xs-top{
+        position: sticky !important;
+
+    }
+    input{
+        min-width: 60px !important;
+    }
+}

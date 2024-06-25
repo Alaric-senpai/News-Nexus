@@ -1,11 +1,15 @@
 <div class=" m-0">
-    <div class="w3-bar w3-block w3-black p-1">
+    <div class="w3-bar w3-block w3-black p-1 small-sticky-xs-top">
         <div class="w3-bar-item  menu">
-            <i class="fa-solid fa-bars p-1"></i>
+            <button type="button" (click)="showmenu()">
+
+                <i class="fa-solid fa-bars p-1" ></i>
+            </button>
         </div>
         <div class="search w3-bar-item">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" name="search" id="search" placeholder="search news nexus">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" name="search" id="search" placeholder="search news nexus" class="mx-1">
+            <button type="submit" class="btn w3-button w3-blue">search</button>
         </div>
         <div class="icons w3-bar-item w3-right d-flex align-items-center justify-content-between">
             <a href="#">
@@ -19,8 +23,8 @@
             </a>
         </div>
     </div>
-    <div class="w3-bar d-flex align-items-start justify-content-between sticky-top w3-white meni">
-        <div class="left link-holder w3-bar-item d-flex align-items-center justify-content-between">
+    <div #menu class="w3-bar class-menu d-flex align-items-start justify-content-between sticky-top w3-white meni">
+        <div class=" left link-holder w3-bar-item d-flex align-items-center justify-content-between">
             <a [routerLink]="['/home']">Home</a>
             <a [routerLink]="['category', 'politics']">Politics</a>
             <a [routerLink]="['category', 'science']">Science</a>
