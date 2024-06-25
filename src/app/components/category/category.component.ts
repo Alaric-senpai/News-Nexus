@@ -1,8 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { NewswireService } from '../../services/newswire.service';
 import { CommonModule } from '@angular/common';
 import { Uipagination } from '../../interfaces/uipagination';
+import { Subscription, interval } from 'rxjs';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-category',
@@ -11,7 +13,7 @@ import { Uipagination } from '../../interfaces/uipagination';
   templateUrl: './category.component.html',
   styleUrls: ['./category.component.css']
 })
-export class CategoryComponent implements OnInit {
+export class CategoryComponent implements OnInit, OnDestroy {
   @Input() pagesize = 10;
 
   displayedStories: any[] = [];
@@ -19,21 +21,29 @@ export class CategoryComponent implements OnInit {
   totalrecords = 0;
   category: string = '';
   newsData: any[] = [];
+  private subscriptions: Subscription = new Subscription();
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private newswire: NewswireService
+    private newswire: NewswireService,
+    private titleService: Title
   ) {}
 
   ngOnInit(): void {
-    this.category = this.route.snapshot.paramMap.get('cat') ?? 'all';
+    this.subscriptions.add(
+      this.route.paramMap.subscribe(params => {
+        this.category = params.get('cat') ?? 'all';
+        this.pagination.page = 1;
+        this.updateTitle();
+        this.fetchCategoryData();
+        this.setupAutoReload();
+      })
+    );
+  }
 
-    if (this.category) {
-      this.fetchCategoryData(this.category);
-    } else {
-      this.router.navigate(['home']);
-    }
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 
   pagination: Uipagination = {
@@ -42,8 +52,8 @@ export class CategoryComponent implements OnInit {
     totalpages: 0
   };
 
-  fetchCategoryData(category: string): void {
-    this.newswire.getCategory(category).subscribe(
+  fetchCategoryData(): void {
+    this.newswire.getCategory(this.category).subscribe(
       (data: any) => {
         this.newsData = data.results;
         this.totalrecords = this.newsData.length;
@@ -77,5 +87,19 @@ export class CategoryComponent implements OnInit {
       this.pagination.page--;
       this.updateDisplayedStories();
     }
+  }
+
+  setupAutoReload() {
+    this.subscriptions.add(
+      interval(30000).subscribe(() => {
+        this.updateTitle();
+        this.fetchCategoryData();
+      })
+    );
+  }
+
+  updateTitle() {
+    const newTitle = `Category: ${this.category.charAt(0).toUpperCase() + this.category.slice(1)}`;
+    this.titleService.setTitle(newTitle);
   }
 }
