@@ -25,20 +25,21 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.fetchHomeStories();
+    // this.fetchHomeStories();
   }
 
   fetchHomeStories() {
-    this.topstories.getHomestories().subscribe(
-      (data: any) => {
-        this.stories = data.results;
-        console.log(this.stories);
-      },
-      error => {
-        this.error = error.message;
-        console.error("error detected", error);
-      }
-    );
+    // this.topstories.getHomestories().subscribe(
+    //   (data: any) => {
+    //     this.stories = data.results;
+    //     console.log(this.stories);
+    //   },
+    //   error => {
+    //     this.error = error.message;
+    //     console.error("error detected", error);
+    //   }
+    // );
+    console.log("working");
   }
   showmenu(){
     // document.getElementById("menu").classList.toggle("shown");

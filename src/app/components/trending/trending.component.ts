@@ -3,11 +3,12 @@ import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { TopstoriesService } from '../../services/topstories.service';
 import { CommonModule } from '@angular/common';
 import { Uipagination } from '../../interfaces/uipagination';
+import { RecentComponent } from '../recent/recent.component';
 
 @Component({
   selector: 'app-trending',
   standalone: true,
-  imports: [CommonModule, RouterModule, RouterOutlet],
+  imports: [CommonModule, RouterModule, RouterOutlet, RecentComponent],
   templateUrl: './trending.component.html',
   styleUrls: ['./trending.component.css']
 })
@@ -42,7 +43,7 @@ export class TrendingComponent implements OnInit {
         this.totalrecords = this.stories.length;
         this.pagination.totalpages = Math.ceil(this.totalrecords / this.pagesize);
         this.updateDisplayedStories();
-        console.log(this.stories);
+        // console.log(this.stories);
       },
       error => {
         this.error = error.message;

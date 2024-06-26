@@ -1,0 +1,17 @@
+<div class="w3-bar">
+    <h3 class="w3-text-deep-purple">Recent news </h3>
+</div>
+    <div *ngIf="allStories.length > 0" class="p-2 mb-4">
+        <!-- success -->
+         <div *ngFor="let story of allStories">
+            <div class="cards">
+                
+            </div>
+         </div>
+    </div>
+    <div *ngIf="allStories.length === 0  && !error">
+        <div class="custom-loader"></div>
+    </div>
+    <div *ngIf="error">
+{{ error}}
+    </div>

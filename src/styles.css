@@ -12,7 +12,10 @@
     font-weight: 700;
     font-style: normal;
   }
-  
+  body{
+    font-family: "PT Sans", sans-serif;
+
+  }
   .pt-sans-regular-italic {
     font-family: "PT Sans", sans-serif;
     font-weight: 400;

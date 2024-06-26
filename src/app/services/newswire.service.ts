@@ -16,5 +16,11 @@ export class NewswireService {
     const url = `https://api.nytimes.com/svc/news/v3/content/nyt/${category}.json?api-key=${this.apikey}`;
     return this.http.get<any>(url);
   }
+
+  getallnews(): Observable<any[]>{
+    const url = `https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=${this.apikey}`;
+    return this.http.get<any[]>(url);
+
+  }
   
 }

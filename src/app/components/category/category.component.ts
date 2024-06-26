@@ -59,7 +59,7 @@ export class CategoryComponent implements OnInit, OnDestroy {
         this.totalrecords = this.newsData.length;
         this.pagination.totalpages = Math.ceil(this.totalrecords / this.pagesize);
 
-        console.log(this.newsData);
+        // console.log(this.newsData);
         this.updateDisplayedStories();
       },
       (error: any) => {
