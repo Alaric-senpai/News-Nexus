@@ -76,4 +76,15 @@
       display: grid;
       place-items: center;
     }
+
+  }
+
+  @media screen and (max-width: 768px) {
+    .loader{
+      width: 100dvh;
+      height: 90dvh;
+      display: grid !important;
+      place-items: center !important;
+    }
+
   }

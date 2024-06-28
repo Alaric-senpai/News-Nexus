@@ -26,4 +26,10 @@
         display: grid;
         grid-template-columns: auto;
     }
+    .story .story-card{
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: start;
+        justify-content: start;
+    }
 }
