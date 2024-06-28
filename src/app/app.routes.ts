@@ -8,6 +8,7 @@ import { CategoryComponent } from './components/category/category.component';
 import { NewsdetailsComponent } from './components/newsdetails/newsdetails.component';
 import { SectionsComponent } from './components/sections/sections.component';
 import { PagemissingComponent } from './components/pagemissing/pagemissing.component';
+import { SearchComponent } from './components/search/search.component';
 
 export const routes: Routes = [
     {
@@ -25,7 +26,7 @@ export const routes: Routes = [
         path: 'home',
         component: HomeComponent,
         // canActivate: [authGuard],
-        title: 'home page',
+        title: 'News Nexus',
         children: [
             {
                 path: '',
@@ -48,6 +49,11 @@ export const routes: Routes = [
             {
                 path: 'details/:url',
                 component: NewsdetailsComponent
+            },
+            {
+                path: 'search',
+                component: SearchComponent,
+                title: 'search for article'
             },
             {
                 path: '**',

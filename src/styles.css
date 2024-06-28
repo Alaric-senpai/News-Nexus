@@ -69,6 +69,10 @@
     100% {transform: rotate(calc(var(--s,1)*1turn))}
   }
 
+  .zindex{
+    z-index: 10000 !important;
+}
+
   @media screen and (max-width: 1200px) {
     .loader{
       width: 100dvh;

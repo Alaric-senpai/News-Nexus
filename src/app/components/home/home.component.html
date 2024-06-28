@@ -7,37 +7,8 @@
             </button>
         </div>
         <div class="search w3-bar-item">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-              Search
-            </button>
-            
-            <!-- Modal -->
-            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-              <div class="modal-dialog ">
-                <div class="modal-content text-bg-secondary">
-                  <div class="modal-header">
-                    <h5 class="modal-title w3-text-black" id="staticBackdropLabel">Search article</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <form class="w-75 w3-center mx-auto">
-                        <div class="mb-3">
-                            <input type="text" name="search" id="search" class="form-control text-bg-primary">
-                        </div>
-                        <div class="mb-2 w3-center">
-                            <button type="submit" class="btn btn-primary">Search</button>
+            <a [routerLink]="['search']" class="btn btn-primary">Search</a>
 
-                        </div>
-
-                    </form>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  </div>
-                </div>
-              </div>
-            </div>
         </div>
         <div class="icons w3-bar-item w3-right d-flex align-items-center justify-content-between">
             <a href="#">
