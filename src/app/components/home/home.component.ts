@@ -3,13 +3,14 @@ import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { TopstoriesService } from '../../services/topstories.service';
 import { CommonModule } from '@angular/common';
 import 'boxicons'
+import { FooterComponent } from "../footer/footer.component";
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [CommonModule, RouterModule, RouterOutlet],
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+    selector: 'app-home',
+    standalone: true,
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.css'],
+    imports: [CommonModule, RouterModule, RouterOutlet, FooterComponent]
 })
 export class HomeComponent implements OnInit {
 

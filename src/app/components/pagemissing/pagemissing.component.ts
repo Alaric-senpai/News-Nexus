@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-pagemissing',
   standalone: true,
-  imports: [],
+  imports: [RouterModule, RouterOutlet],
   templateUrl: './pagemissing.component.html',
   styleUrl: './pagemissing.component.css'
 })

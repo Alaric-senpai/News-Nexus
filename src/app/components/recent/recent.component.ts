@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Uipagination } from '../../interfaces/uipagination';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NewswireService } from '../../services/newswire.service';
+import { DateService } from '../../services/date.service';
 import { Title } from '@angular/platform-browser';
 import { interval, Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
@@ -11,15 +12,14 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './recent.component.html',
-  styleUrl: './recent.component.css'
+  styleUrls: ['./recent.component.css']
 })
-export class RecentComponent {
+export class RecentComponent implements OnInit, OnDestroy {
   @Input() pagesize = 10;
 
   allStories: any[] = [];
   error: string | null = null;
   totalrecords = 0;
-  // category: string = 'all';
   newsData: any[] = [];
   private subscriptions: Subscription = new Subscription();
 
@@ -27,15 +27,15 @@ export class RecentComponent {
     private route: ActivatedRoute,
     private router: Router,
     private newswire: NewswireService,
+    private dateService: DateService,
     private titleService: Title
   ) {}
 
   ngOnInit(): void {
-    
-        this.allpagination.page = 1;
-        // this.updateTitle();
-        this.fetchCategoryData();
-        this.setupAutoReload();
+    this.allpagination.page = 1;
+    this.fetchCategoryData();
+    this.setupAutoReload();
+    this.setupTimeDifferenceUpdate();
   }
 
   ngOnDestroy(): void {
@@ -55,7 +55,6 @@ export class RecentComponent {
         this.totalrecords = this.newsData.length;
         this.allpagination.totalpages = Math.ceil(this.totalrecords / this.pagesize);
 
-        console.log(this.newsData);
         this.updateDisplayedStories();
       },
       (error: any) => {
@@ -88,11 +87,20 @@ export class RecentComponent {
   setupAutoReload() {
     this.subscriptions.add(
       interval(30000).subscribe(() => {
-        // this.updateTitle();
         this.fetchCategoryData();
       })
     );
   }
 
-  
+  setupTimeDifferenceUpdate() {
+    this.subscriptions.add(
+      interval(60000).subscribe(() => {
+        this.updateDisplayedStories();
+      })
+    );
+  }
+
+  getTimeDifference(date: string) {
+    return this.dateService.convertDate(date);
+  }
 }

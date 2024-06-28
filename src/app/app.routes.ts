@@ -9,6 +9,8 @@ import { NewsdetailsComponent } from './components/newsdetails/newsdetails.compo
 import { SectionsComponent } from './components/sections/sections.component';
 import { PagemissingComponent } from './components/pagemissing/pagemissing.component';
 import { SearchComponent } from './components/search/search.component';
+import { BooksComponent } from './components/books/books.component';
+import { SectiondetailsComponent } from './components/sectiondetails/sectiondetails.component';
 
 export const routes: Routes = [
     {
@@ -54,6 +56,14 @@ export const routes: Routes = [
                 path: 'search',
                 component: SearchComponent,
                 title: 'search for article'
+            },
+            {
+                path: 'books',
+                component: BooksComponent
+            },
+            {
+                path: 'section/:cat',
+                component: SectiondetailsComponent
             },
             {
                 path: '**',

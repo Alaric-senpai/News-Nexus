@@ -1,1 +1,9 @@
-<p>sections works!</p>
+<div class="container-fluid m-0 mt-3">
+    <div class="row">
+        <div *ngFor="let section of sections" class="w3-card-4 d-flex flex-column  ">
+            <!-- {{ section }} -->
+              <img src="https://img.freepik.com/free-vector/active-tourist-hiking-mountain-man-wearing-backpack-enjoying-trekking-looking-snowcapped-peaks-vector-illustration-nature-wilderness-adventure-travel-concept_74855-9800.jpg?auto=format&fit=crop&w=315&h=220" alt="">
+              <a [routerLink]="['/home/section', section]" class="w3-button w3-margin w3-blue">{{ section}} </a>
+        </div>
+    </div>
+</div>

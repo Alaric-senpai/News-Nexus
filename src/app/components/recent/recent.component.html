@@ -1,17 +1,32 @@
 <div class="w3-bar">
     <h3 class="w3-text-deep-purple">Recent news </h3>
 </div>
-    <div *ngIf="allStories.length > 0" class="p-2 mb-4">
-        <!-- success -->
-         <div *ngFor="let story of allStories">
-            <div class="cards">
-                
+<div *ngIf="allStories.length > 0" class="p-2 mb-4">
+    <!-- success -->
+    <div class="row">
+        <div *ngFor="let story of allStories" class="col-lg-12 col-md-12 col-xs-12 my-2 stories w3-hover-shadow">
+            <div class="left">
+                <img [src]="story.multimedia[1].url" alt="">
             </div>
-         </div>
+            <div class="right">
+                <h3>{{ story.title }} </h3>
+                <h5>{{ story.byline }} </h5>
+                <h6>source: {{ story.source }} </h6> 
+                <h6>date: {{ story.published_date }} </h6>
+                <h6><i class="fa-regular fa-clock"></i>: {{ getTimeDifference(story.published_date).value }} {{ getTimeDifference(story.published_date).unit }} ago</h6>
+                <p>{{story.abstract || story.item_type}} <a [href]="story.url" target="_blank">Read more</a> </p>
+            </div>
+        </div>
     </div>
-    <div *ngIf="allStories.length === 0  && !error">
-        <div class="custom-loader"></div>
+    <div class="pagination w3-bar p-2 w3-display-container container">
+        <button (click)="prevPage()" [disabled]="allpagination.page === 1" class="w3-bar-item w3-left btn w3-button w3-sand">Previous</button>
+        <span class="w3-bar-item w3-display-middle">Page {{ allpagination.page }} of {{ allpagination.totalpages }}</span>
+        <button (click)="nextPage()" [disabled]="allpagination.page === allpagination.totalpages" class="w3-right w3-bar-item btn w3-display-right btn-info">Next</button>
     </div>
-    <div *ngIf="error">
-{{ error}}
-    </div>
+</div>
+<div *ngIf="allStories.length === 0 && !error">
+    <div class="custom-loader"></div>
+</div>
+<div *ngIf="error">
+    {{ error }}
+</div>
