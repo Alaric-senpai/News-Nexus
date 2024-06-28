@@ -28,8 +28,12 @@
     }
     .story .story-card{
         display: flex;
-        flex-direction: row-reverse;
+        flex-direction: column-reverse;
         align-items: start;
         justify-content: start;
+        height: max-content;
+    }
+    .story-card .image-holder{
+        min-height: 200px;
     }
 }
