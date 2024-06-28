@@ -1,5 +1,5 @@
 <div class=" m-0">
-    <div class="w3-bar w3-block w3-black p-1 small-sticky-xs-top">
+    <div class="w3-bar w3-block w3-black p-1 w-100 top ">
         <div class="w3-bar-item  menu">
             <button type="button" (click)="showmenu()">
 
@@ -27,6 +27,8 @@
             <a [routerLink]="['/home']">Home</a>
             <a [routerLink]="['category', 'politics']">Politics</a>
             <a [routerLink]="['category', 'science']">Science</a>
+            <a [routerLink]="['books']">Books</a>
+
 
         </div>
         <div class="logo w3-bar-item">
@@ -40,7 +42,7 @@
 
         </div>
     </div>
-    <div class="container-fluid mt-2">
+    <div class="container-fluid mt-2 mx-0">
         <router-outlet></router-outlet>        
     </div>
     <app-footer></app-footer>

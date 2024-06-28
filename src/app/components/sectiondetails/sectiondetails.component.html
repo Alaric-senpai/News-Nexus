@@ -1,5 +1,5 @@
-<div *ngIf="sectiondata">
-  <ul>
+<div *ngIf="sectiondata.length > 0">
+  <ul class="w3-ul">
     <li *ngFor="let item of sectiondata">
       <h3>{{ item.title }}</h3>
       <p>{{ item.description }}</p>
@@ -9,4 +9,7 @@
 </div>
 <div *ngIf="error">
   <p>{{ error }}</p>
+</div>
+<div class="container w3-center my-3">
+  <a routerLink="/home/sections" class="w3-button w3-amber">Go back</a>
 </div>

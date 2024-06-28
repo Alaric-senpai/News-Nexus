@@ -6,10 +6,16 @@
     justify-content: center;
     font-size: 25px;
 }
+.top{
+    min-width: 100dvw !important;
+}
 a i{
     width: 100%;
     height: 100%;
     font-size: 30px;
+}
+#menu{
+    transition: all .5s ease;
 }
 .menu i{
     background-color: #25252b;
@@ -55,6 +61,16 @@ input{
 .meni{
     z-index: 1000;
 }
+.sticky-shadow {
+    background-color: #25252b !important; 
+    color: white ;
+    min-width: 100dvw !important;
+    box-shadow: 4px 5px 6px  4px rgba(0, 0, 0, 0.1);
+  }
+
+  .sticky-shadow a{
+    color: white !important;
+  }
 @media only screen and (max-width: 1200px){
     .class-menu{
         position: fixed;
