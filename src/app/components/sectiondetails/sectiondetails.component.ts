@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { RssService } from '../../services/rss.service';
 import { ActivatedRoute } from '@angular/router';
-import { parseString } from 'xml2js';
 
 @Component({
   selector: 'app-sectiondetails',
@@ -30,14 +29,16 @@ export class SectiondetailsComponent implements OnInit, OnDestroy {
   getSectionData(section: string): void {
     this.rssservice.getSectionData(section).subscribe(
       (data: string) => {
-        parseString(data, { trim: true, explicitArray: false }, (err, result) => {
-          if (err) {
-            console.error('Error parsing XML:', err);
-          } else {
-            this.sectiondata = result;
-            console.log('Parsed RSS Data:', this.sectiondata);
-          }
-        });
+        const parser = new DOMParser();
+        const xml = parser.parseFromString(data, 'application/xml');
+        const items = xml.querySelectorAll('item');
+        const result = Array.from(items).map(item => ({
+          title: item.querySelector('title')?.textContent,
+          link: item.querySelector('link')?.textContent,
+          description: item.querySelector('description')?.textContent
+        }));
+        this.sectiondata = result;
+        console.log('Parsed RSS Data:', this.sectiondata);
       },
       (error) => {
         this.error = 'Error fetching section data';
